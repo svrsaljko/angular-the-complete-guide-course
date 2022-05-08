@@ -1,0 +1,60 @@
+<label for="serverNameInputId">Server Name</label>
+<input
+  id="serverNameInputId"
+  class="form-control"
+  type="text"
+  (input)="onUpdateServerName($event)"
+/>
+<!-- primjer gore -> event binding -->
+<!-- primjer dolje jos bolji nacin preko two-way data bindinga (event + property) -->
+<!-- kombinacija sa ngModel direktivom !!! kombiniranje sintakse [] iz propertya i () iz event bindinga -->
+<!-- gornji primjer kada serverName nije prazan input nece prikazat inicijalno stanje, a donji oce jer radi two way data bindign odnosno i property binding -->
+<!-- plus sto nije potrebna metoda za update inputa -->
+<input
+  id="serverNameInputId"
+  class="form-control"
+  type="text"
+  [(ngModel)]="serverName"
+/>
+<!-- <p>{{ serverName }}</p> -->
+<!-- event se ovako oznacava da ga angular prepozna i pokupi njegove propse(f-je i HTMLInputElement), $ !!! -->
+<button
+  class="btn btn-primary"
+  [disabled]="!allowNewServer"
+  (click)="onServerCreation()"
+>
+  ADD NEW SERVER
+</button>
+<!-- <p>{{ serverCreationStatus }}</p> -->
+<!-- potreban else statement u ifalici -->
+<!-- ngIf je STRUKTURALNA DIREKTIVA, POSTOJE TAKOĐER I ATRIBUTNE -->
+<p *ngIf="serverCreated; else noServer">
+  Server {{ serverName }} successfully created!
+</p>
+
+<!-- template je komponenta direkitva koja mora biti tagirana da je angular zna ubacit -->
+<ng-template #noServer>
+  <p>No server was created!</p>
+</ng-template>
+
+<!-- MORE SE INSPEKTATI HTML ELEMENT ZAKONENTRIANOG ANGULAR HOOK-A -->
+<!-- direktive mogu biti template direktive (to su komponente instrukcije za od Angulara za DOM ) ili direktive u tagu npr. *ngIf -->
+
+<!-- <p [innerText]="allowNewServer"></p> -->
+<!-- je isto sto i property binding i string interpolation kad se koriste za istu stvar -->
+<!-- <p>{{ allowNewServer }}</p> -->
+<hr />
+<app-server *ngFor="let server of servers"></app-server>
+<hr />
+<hr />
+<label for="usernameInputId">UserName</label>
+<input
+  id="serverNameInputId"
+  class="form-control"
+  type="text"
+  [(ngModel)]="userName"
+/>
+<p>{{ userName }}</p>
+<button class="btn btn-info" [disabled]="!userName" (click)="userName = ''">
+  RESET USERNAME
+</button>

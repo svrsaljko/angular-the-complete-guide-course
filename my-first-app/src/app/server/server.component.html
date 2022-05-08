@@ -1,0 +1,11 @@
+<p
+  [ngStyle]="{ backgroundColor: getColor() }"
+  [ngClass]="{ online: serverStatus === 'online' }"
+>
+  {{ "Server" }} with id: {{ getServerId() }} has status {{ serverStatus }}
+</p>
+<!-- klasa za stilove se dinamicki dodjeluje -->
+<!-- ngClass je jos jedna built-in attribute direktiva -->
+
+<!-- ngStyle je dirketiva zapakirana u [] koje oznacavaju property-binding -->
+<!-- {{"Server"}} primjer da unutra mora biti string ili nesto kao number sto se lako automatsi pretvara u string, mogu se zvati f-je i sl. -->

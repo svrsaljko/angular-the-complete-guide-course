@@ -1,0 +1,8 @@
+<button (click)="onDisplayDetailsClick()">DISPLAY DETAILS</button>
+<p
+  [ngStyle]="{ backgroundColor: counter >= 5 ? 'blue' : 'none' }"
+  [ngClass]="{ 'text-color': counter >= 5 }"
+>
+  {{ counter }}
+</p>
+<p *ngIf="showDetails">secret password: piletina s rižom</p>
